@@ -96,8 +96,8 @@ const Home = () => {
         <div className="footer-content">
           <div className="footer-brand">LIHI BEAUTY</div>
           <div className="footer-info">
-            <p>📍 Phục vụ tận nơi tại TP. Hồ Chí Minh</p>
-            <p>📞 Tư vấn miễn phí: 090x xxx xxx</p>
+            <p>📍 Phục vụ tận nơi tại Khu vực TPHCM và các khu vực lân cận</p>
+            <p>📞 Tư vấn miễn phí: 0933 720 528</p>
           </div>
           <div className="footer-social">
             <span>Facebook</span> — <span>Zalo</span> — <span>Instagram</span>
