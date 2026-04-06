@@ -238,7 +238,31 @@
     font-size: 0.85rem;
   }
 }
+/* SEO CONTENT */
+.seo-content {
+  padding: 80px 10%;
+  background: #fff;
+  max-width: 900px;
+  margin: auto;
+  line-height: 1.8;
+}
 
+.seo-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.seo-content p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+/* FIX LỖI GRID */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
 /* Tối ưu cho màn hình cực nhỏ (iPhone SE) */
 @media (max-width: 380px) {
   .hero-headline {
