@@ -23,12 +23,13 @@ const ImageGallery = ({ images }) => {
         {images.map((img) => (
           <article key={img.id} className="image-card-item group">
             <div className="image-container aspect-[4/5]">
-              <img 
-                src={img.url} 
-                alt={'img.title} - Phun xăm tại nhà'}
-                loading="lazy"
-                className="main-img"
-              />
+         <img 
+  src={img.url} 
+  // Cách viết đúng để Google hiểu tiêu đề từng ảnh:
+  alt={`${img.title} - Dịch vụ phun xăm tại nhà Lihi Beauty`} 
+  loading="lazy"
+  className="main-img"
+/>
               <div className="image-overlay">
                 <span>Xem chi tiết</span>
               </div>

@@ -1,35 +1,81 @@
-/* Container ảnh - Giới hạn kích thước ảnh */
+/* Container tổng */
+.image-gallery-wrapper {
+  padding: 20px 0;
+}
+
+/* Cấu trúc Grid linh hoạt */
+.grid {
+  display: grid;
+  /* Trên Mobile: 1 cột | Máy tính bảng: 2 cột | Laptop: 3 cột */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+/* Card hình ảnh */
+.image-card-item {
+  background: #ffffff;
+  border-radius: 20px; /* Bo góc nhẹ nhàng hơn */
+  overflow: hidden;
+  border: 1px solid #fceef0;
+  transition: all 0.4s ease;
+  width: 100%; /* Đảm bảo card chiếm hết chiều ngang cột */
+  max-width: 100%; /* Bỏ giới hạn 350px để nó co giãn theo lưới */
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+/* Container ảnh - Giữ tỉ lệ chuẩn */
 .image-container {
   position: relative;
   width: 100%;
-  /* Tỉ lệ 4:5 giúp ảnh thon gọn, không bị quá dài hay quá to */
   aspect-ratio: 4 / 5; 
-  max-height: 400px; /* Chiều cao tối đa để ảnh không chiếm hết màn hình */
   overflow: hidden;
-  background-color: #fff1f2; /* Màu nền chờ khi ảnh chưa load */
+  background-color: #fff1f2;
 }
 
 .main-img {
   width: 100%;
   height: 100%;
-  /* Cực kỳ quan trọng: giúp ảnh tự co giãn để lấp đầy khung mà không bị méo */
   object-fit: cover; 
-  display: block;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.6s ease;
 }
 
-/* Card hình ảnh - Giới hạn chiều ngang của card */
-.image-card-item {
-  background: #ffffff;
-  border-radius: 24px;
+/* Chi tiết dưới ảnh */
+.image-details {
+  padding: 16px;
+}
+
+.image-details .title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.image-details .description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  /* Giới hạn mô tả chỉ hiện 2 dòng để các card đều nhau */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  border: 1px solid #fff1f2;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  max-width: 350px; /* Giới hạn chiều ngang mỗi card ảnh */
-  margin: 0 auto;   /* Căn giữa card trong cột */
 }
 
-/* Hiệu ứng Zoom ảnh khi hover vào card */
-.image-card-item:hover .main-img {
-  transform: scale(1.1);
+/* --- RESPONSIVE CHO MOBILE --- */
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr; /* Luôn là 1 cột trên điện thoại */
+    gap: 20px;
+  }
+
+  .image-card-item {
+    border-radius: 16px;
+  }
+  
+  .image-container {
+    max-height: 350px; /* Thu nhỏ chiều cao ảnh trên mobile cho đỡ dài */
+  }
 }

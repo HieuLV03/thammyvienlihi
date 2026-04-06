@@ -122,3 +122,48 @@
   margin-top: 15px;
   font-style: italic;
 }
+/* --- TỐI ƯU FORM CHO MOBILE --- */
+@media (max-width: 768px) {
+  .upload-wrapper {
+    padding: 10px; /* Giảm padding ngoài cùng để form rộng hơn một chút */
+  }
+
+  .upload-container {
+    padding: 20px 15px; /* Thu nhỏ khoảng cách bên trong form */
+    border-radius: 20px;
+    border-width: 1px; /* Trên mobile nét đứt mỏng nhìn sẽ sang hơn */
+  }
+
+  .upload-container h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  /* Preview ảnh nhỏ lại một chút trên mobile để không phải cuộn trang quá nhiều */
+  .image-preview-box {
+    height: 160px;
+  }
+
+  /* Quan trọng: Tránh tình trạng iPhone tự động phóng to (zoom) khi nhấn vào ô nhập liệu */
+  .input-field {
+    font-size: 16px; /* 16px là kích thước chuẩn để iOS không tự kích hoạt zoom */
+    padding: 10px 12px;
+  }
+
+  .submit-btn {
+    padding: 12px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+  }
+
+  .seo-note {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+}
+
+/* Hiệu ứng khi đang tải (Uploading) */
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}

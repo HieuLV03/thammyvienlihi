@@ -151,9 +151,102 @@
 
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; font-size: 0.7rem; text-align: center; opacity: 0.4; }
 
-/* RESPONSIVE */
+/* --- TỐI ƯU RESPONSIVE CHO DI ĐỘNG --- */
+
 @media (max-width: 768px) {
-  .hero-headline { font-size: 3.5rem; }
-  .hero-headline span { padding-left: 0; }
-  .footer-content { flex-direction: column; gap: 50px; }
+  /* 1. Header & Nav */
+  .main-header {
+    padding: 15px 5%;
+  }
+  
+  .nav-container {
+    padding-bottom: 10px;
+  }
+
+  .nav-menu {
+    gap: 15px; /* Thu hẹp khoảng cách menu */
+  }
+
+  .nav-menu li:not(:last-child) {
+    display: none; /* Ẩn các mục không quan trọng trên mobile để tránh rối */
+  }
+
+  .logo-brand {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+  }
+
+  /* 2. Hero Section - Quan trọng nhất để SEO */
+  .hero-editorial {
+    height: auto;
+    padding: 80px 5% 50px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-headline {
+    font-size: 2.8rem; /* Giảm size để không bị ngắt dòng xấu */
+    line-height: 1.1;
+  }
+
+  .hero-headline span {
+    padding-left: 0;
+    margin-top: 10px;
+  }
+
+  .hero-subtext {
+    margin: 20px auto 30px;
+    font-size: 0.95rem;
+  }
+
+  .hero-decoration {
+    display: none; /* Ẩn hình trang trí để tập trung vào nội dung chữ */
+  }
+
+  /* 3. Section General */
+  .services-grid-section,
+  .gallery-showcase {
+    padding: 60px 5%;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  /* 4. Service Cards */
+  .services-container {
+    grid-template-columns: 1fr; /* Luôn xếp 1 cột trên mobile */
+    gap: 20px;
+  }
+
+  .new-service-card {
+    padding: 40px 25px;
+  }
+
+  /* 5. Footer */
+  .footer-elegant {
+    padding: 60px 5% 30px;
+    text-align: center;
+  }
+
+  .footer-content {
+    align-items: center;
+    gap: 30px;
+  }
+
+  .footer-info p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Tối ưu cho màn hình cực nhỏ (iPhone SE) */
+@media (max-width: 380px) {
+  .hero-headline {
+    font-size: 2.2rem;
+  }
+  
+  .nav-cta {
+    padding: 8px 15px;
+    font-size: 0.7rem;
+  }
 }
