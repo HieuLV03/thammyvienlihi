@@ -30,10 +30,10 @@ const Home = () => {
         <div className="hero-content">
           <p className="hero-tagline">Professional Permanent Makeup</p>
           <h1 className="hero-headline">
-            Vẻ đẹp <br /> <span>Vượt thời gian</span>
+            Phun xăm tại nhà <br /> <span>Chuyên nghiệp</span>
           </h1>
           <p className="hero-subtext">
-            Dịch vụ phun xăm thẩm mỹ tận nơi với kỹ thuật vi chạm độc quyền, 
+            Dịch vụ phun xăm thẩm mỹ tại nhà, với kỹ thuật vi chạm độc quyền, 
             mang lại vẻ đẹp tự nhiên và sự an tâm tuyệt đối.
           </p>
           <div className="hero-actions">
@@ -49,29 +49,9 @@ const Home = () => {
       <section id="services" className="services-grid-section">
         <div className="section-header">
           <span className="section-number">01</span>
-          <h2 className="section-title">Dịch Vụ Độc Quyền</h2>
+          <h2 className="section-title">Dịch Vụ Phun xăm tại nhà</h2>
         </div>
         
-        <div className="services-container">
-          <ServiceCard 
-            num="01" 
-            title="Phun Môi Collagen" 
-            price="1.500.000đ" 
-            desc="Kỹ thuật phủ bóng mướt mịn, khử thâm và tạo hiệu ứng môi căng mọng tự nhiên." 
-          />
-          <ServiceCard 
-            num="02" 
-            title="Hairstroke Lông Mày" 
-            price="2.000.000đ" 
-            desc="Tạo sợi lông mày siêu thực bằng máy, giữ màu bền đẹp và không gây tổn thương da." 
-          />
-          <ServiceCard 
-            num="03" 
-            title="Phun Mí Mở Tròng" 
-            price="800.000đ" 
-            desc="Điểm xuyết đường mí sắc nét, giúp đôi mắt có chiều sâu và cuốn hút hơn." 
-          />
-        </div>
       </section>
 
       {/* 4. GALLERY - KHÔNG GIAN TRIỂN LÃM */}
@@ -96,7 +76,7 @@ const Home = () => {
         <div className="footer-content">
           <div className="footer-brand">LIHI BEAUTY</div>
           <div className="footer-info">
-            <p>📍 Phục vụ tận nơi tại Khu vực TPHCM và các khu vực lân cận</p>
+            <p>📍 Chuyên phun xăm tại nhà ở Khu vực TPHCM và các khu vực lân cận</p>
             <p>📞 Tư vấn miễn phí: 0933 720 528</p>
           </div>
           <div className="footer-social">

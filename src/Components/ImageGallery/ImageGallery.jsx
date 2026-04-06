@@ -25,7 +25,7 @@ const ImageGallery = ({ images }) => {
             <div className="image-container aspect-[4/5]">
               <img 
                 src={img.url} 
-                alt={img.title} 
+                alt={'img.title} - Phun xăm tại nhà'}
                 loading="lazy"
                 className="main-img"
               />
