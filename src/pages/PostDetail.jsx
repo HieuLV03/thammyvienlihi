@@ -1,6 +1,7 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { posts } from "../data/posts";
+import { Helmet } from "react-helmet-async";
 import "./PostDetail.css";
 
 const PostDetail = () => {
@@ -13,11 +14,37 @@ const PostDetail = () => {
     window.scrollTo(0, 0);
   }, [slug]);
 
-  if (!post) return <h2 style={{ padding: 30 }}>Không tìm thấy bài viết</h2>;
+  if (!post) {
+    return <h2 style={{ padding: 30 }}>Không tìm thấy bài viết</h2>;
+  }
 
   return (
     <div className="post-wrapper">
 
+      {/* SEO */}
+<Helmet>
+  <title>{post.title} | Lihi Beauty</title>
+  <meta name="description" content={post.description} />
+
+  <link
+    rel="canonical"
+    href={`https://lihibeautyweb.vercel.app/${slug}`}
+  />
+
+  {/* SEO SHARE FACEBOOK / ZALO */}
+  <meta property="og:title" content={post.title} />
+  <meta property="og:description" content={post.description} />
+  <meta property="og:url" content={`https://lihibeautyweb.vercel.app/${slug}`} />
+  <meta property="og:type" content="article" />
+
+  {/* 🔥 FIX QUAN TRỌNG */}
+  <meta property="og:image" content={post.image} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+</Helmet>
       {/* HEADER */}
       <header className="main-header">
         <nav className="nav-container">
@@ -48,7 +75,6 @@ const PostDetail = () => {
       {/* CONTENT */}
       <div className="post-container">
 
-        {/* CASE 1: có services */}
         {post.services ? (
           <div className="service-grid">
             {post.services.map((item) => (
@@ -75,7 +101,6 @@ const PostDetail = () => {
             ))}
           </div>
         ) : (
-          /* CASE 2: content HTML */
           <div
             className="post-content"
             dangerouslySetInnerHTML={{ __html: post.content }}
