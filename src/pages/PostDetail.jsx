@@ -23,22 +23,22 @@ const PostDetail = () => {
 
       {/* SEO */}
 <Helmet>
-  <title>{post.title} | Lihi Beauty</title>
+  <title>{post.title} | Thẩm mỹ viện LiHi</title>
   <meta name="description" content={post.description} />
 
   <link
     rel="canonical"
-    href={`https://lihibeautyweb.vercel.app/${slug}`}
+    href={`https://thammyvienlihi.vercel.app/${slug}`}
   />
 
   {/* SEO SHARE FACEBOOK / ZALO */}
   <meta property="og:title" content={post.title} />
   <meta property="og:description" content={post.description} />
-  <meta property="og:url" content={`https://lihibeautyweb.vercel.app/${slug}`} />
+  <meta property="og:url" content={`https://thammyvienlihi.vercel.app/${slug}`} />
   <meta property="og:type" content="article" />
 
   {/* 🔥 FIX QUAN TRỌNG */}
-<meta property="og:image" content="https://lihibeautyweb.vercel.app/cover.jpg" />
+<meta property="og:image" content="https://thammyvienlihi.vercel.app/cover.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -48,7 +48,7 @@ const PostDetail = () => {
       {/* HEADER */}
       <header className="main-header">
         <nav className="nav-container">
-          <div className="logo-brand">LIHI <span>BEAUTY</span></div>
+          <div className="logo-brand">TMV LIHI <span></span></div>
 
           <ul className="nav-menu">
             <li><Link to="/">Trang chủ</Link></li>
