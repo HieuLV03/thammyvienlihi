@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
-import { HARDCODED_IMAGES } from "../../assets/data/imagesData";
-import UploadForm from "../../Components/UploadForm/UploadForm";
-import ImageGallery from "../../Components/ImageGallery/ImageGallery";
-import { Link } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
+import img1 from "../../assets/phun-moi-collagen.jpg";
+import img2 from "../../assets/phun-xam-chan-mai.jpg";
+import img3 from "../../assets/phun-nhu-hoa.jpg";
+import img4 from "../../assets/phun-vung-kin.jpg";
+
 import { posts } from "../../data/posts";
 import "./Home.css";
 
 const Home = () => {
 
   // ================= STATE =================
-  const [images, setImages] = useState([]);
-  const [demoImages] = useState(HARDCODED_IMAGES);
-
   const [feedbacks, setFeedbacks] = useState([]);
   const [showAll, setShowAll] = useState(false);
 
@@ -24,18 +22,8 @@ const Home = () => {
 
   // ================= FETCH =================
   useEffect(() => {
-    fetchImages();
     fetchFeedbacks();
   }, []);
-
-  const fetchImages = async () => {
-    const { data } = await supabase
-      .from("images")
-      .select("*")
-      .order("created_at", { ascending: false });
-
-    if (data) setImages(data);
-  };
 
   const fetchFeedbacks = async () => {
     const { data } = await supabase
@@ -47,10 +35,6 @@ const Home = () => {
   };
 
   // ================= ACTION =================
-  const handleUploadSuccess = (newImage) => {
-    setImages((prev) => [newImage, ...prev]);
-  };
-
   const handleSubmitFeedback = async () => {
     if (!form.email || !form.content) {
       alert("Nhập email và nội dung");
@@ -66,8 +50,6 @@ const Home = () => {
     }
   };
 
-  // ================= DATA =================
-  const allImages = [...images, ...demoImages];
   const visibleFeedbacks = showAll ? feedbacks : feedbacks.slice(0, 3);
 
   // ================= UI =================
@@ -77,10 +59,10 @@ const Home = () => {
       {/* HEADER */}
       <header className="main-header">
         <nav className="nav-container">
-          <div className="logo-brand">LIHI <span>BEAUTY</span></div>
+          <div className="logo-brand">TMV LIHI</div>
           <ul className="nav-menu">
             <li><a href="#services">Dịch vụ</a></li>
-            <li><a href="#gallery">Tác phẩm</a></li>
+            <li><a href="#feedback">Đánh giá</a></li>
             <li><a href="tel:0933720528" className="nav-cta">Đặt lịch</a></li>
           </ul>
         </nav>
@@ -109,8 +91,32 @@ const Home = () => {
         <h2 className="section-title">Dịch vụ</h2>
 
         <div className="services-container">
-          <ServiceCard num="01" title="Phun môi collagen" price="799.000đ" />
-          <ServiceCard num="02" title="Điêu khắc chân mày" price="999.000đ" />
+
+          <ServiceCard
+            num="01"
+            title="Phun môi collagen"
+            price="799.000đ"
+            image={img1}
+          />
+
+          <ServiceCard
+            num="02"
+            title="Điêu khắc chân mày"
+            price="999.000đ"
+            image={img2}
+          />
+     <ServiceCard
+            num="03"
+            title="Phun hồng nhũ hoa"
+            price="3.800.000đ"
+            image={img3}
+          />
+               <ServiceCard
+            num="04"
+            title="Phun hồng vùng kín"
+            price="3.800..000đ"
+            image={img4}
+          />
         </div>
       </section>
 
@@ -120,24 +126,16 @@ const Home = () => {
 
         <div className="blog-grid">
           {posts.map((post) => (
-            <Link key={post.slug} to={`/${post.slug}`} className="blog-card">
+            <a key={post.slug} href={`/${post.slug}`} className="blog-card">
               <h3>{post.title}</h3>
               <p>{post.description}</p>
-            </Link>
+            </a>
           ))}
         </div>
       </section>
 
-      {/* GALLERY */}
-      <section id="gallery">
-        <h2 className="gallery-title">Khách hàng thực tế</h2>
-
-        <UploadForm onUploadSuccess={handleUploadSuccess} />
-        <ImageGallery images={allImages} />
-      </section>
-
       {/* FEEDBACK */}
-      <section className="feedback-section">
+      <section id="feedback" className="feedback-section">
         <h2 className="gallery-title">Khách hàng đánh giá</h2>
 
         {/* FORM */}
@@ -191,15 +189,15 @@ const Home = () => {
       {/* FOOTER */}
       <footer className="footer-elegant">
         <div className="footer-content">
-          <div className="footer-brand">LIHI BEAUTY</div>
+          <div className="footer-brand">Thẩm mỹ viện LiHi</div>
           <div className="footer-info">
-            <p>📍 Phun xăm tại nhà TP.HCM</p>
+            <p>📍 Phun xăm tại nhà uy tín chuyên nghiệp</p>
             <p>📞 0933 720 528</p>
           </div>
         </div>
 
         <div className="footer-bottom">
-          © 2026 LIHI BEAUTY
+          © 2026 Thẩm mỹ viện LiHi
         </div>
       </footer>
 
@@ -207,14 +205,37 @@ const Home = () => {
   );
 };
 
-const ServiceCard = ({ num, title, price }) => (
-  <div className="new-service-card">
-    <span className="card-num">{num}</span>
-    <h3>{title}</h3>
-    <div className="card-price">{price}</div>
-    <p>Dịch vụ tại nhà, riêng tư, an toàn</p>
-    <div className="card-line"></div>
-  </div>
-);
+const ServiceCard = ({ num, title, price, image }) => {
+  const zaloLink = "https://zalo.me/0933720528";
+
+  return (
+    <div className="new-service-card">
+
+      {image && (
+        <div className="service-image">
+          <img src={image} alt={title} />
+        </div>
+      )}
+
+      <span className="card-num">{num}</span>
+      <h3>{title}</h3>
+
+      <div className="card-price">{price}</div>
+
+      <p>Dịch vụ tại nhà, riêng tư, an toàn</p>
+
+      <a
+        href={zaloLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn-zalo"
+      >
+        💬 Tư vấn ngay
+      </a>
+
+      <div className="card-line"></div>
+    </div>
+  );
+};
 
 export default Home;

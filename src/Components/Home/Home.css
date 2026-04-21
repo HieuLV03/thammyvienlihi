@@ -138,25 +138,33 @@ section {
 
 .new-service-card {
   background: #fff;
-  padding: 40px;
-  border-radius: 12px;
+  padding: 20px;
+  border-radius: 14px;
   position: relative;
   transition: 0.3s;
 }
 
 .new-service-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
-.card-num {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 2rem;
-  opacity: 0.1;
+/* SERVICE IMAGE */
+.service-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 12px;
 }
 
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* PRICE */
 .card-price {
   color: var(--primary);
   font-weight: bold;
@@ -168,6 +176,23 @@ section {
   height: 2px;
   background: var(--primary);
   margin-top: 10px;
+}
+
+/* ================= BUTTON ZALO ================= */
+.btn-zalo {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #0068ff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.btn-zalo:hover {
+  background: #0052cc;
 }
 
 /* ================= BLOG ================= */
@@ -204,22 +229,6 @@ section {
   transform: translateY(-5px);
 }
 
-.blog-card h3 {
-  margin-bottom: 10px;
-}
-
-/* ================= GALLERY ================= */
-#gallery {
-  padding: 100px 5%;
-}
-
-.gallery-title {
-  text-align: center;
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-}
-
 /* ================= FEEDBACK ================= */
 .feedback-section {
   padding: 80px 5%;
@@ -232,30 +241,35 @@ section {
   gap: 20px;
 }
 
+/* CARD */
 .feedback-card {
   background: #fff;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 15px;
+  border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
+/* FIX ẢNH FEEDBACK */
 .feedback-card img {
   width: 100%;
-  height: 200px;
+  height: 180px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .feedback-card p {
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .feedback-email {
   font-size: 0.8rem;
   color: #999;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
+/* FORM */
 .feedback-form {
   max-width: 500px;
   margin: 0 auto 40px;
@@ -301,14 +315,47 @@ section {
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  .main-header {
-    padding: 15px 5%;
+  .hero-headline {
+    font-size: 2.3rem;
+  }
+
+  .services-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+}
+/* ================= RESPONSIVE FIX ================= */
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .hero-headline {
+    font-size: 3rem;
+  }
+
+  .services-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  /* HEADER */
+  .nav-menu {
+    gap: 15px;
+    font-size: 0.8rem;
   }
 
   .nav-menu li:not(:last-child) {
-    display: none;
+    display: none; /* chỉ giữ nút đặt lịch */
   }
 
+  /* HERO */
   .hero-editorial {
     flex-direction: column;
     text-align: center;
@@ -316,33 +363,83 @@ section {
   }
 
   .hero-headline {
-    font-size: 2.3rem;
+    font-size: 2.2rem;
   }
 
+  .hero-subtext {
+    font-size: 0.9rem;
+  }
+
+  /* SERVICES */
   .services-grid-section {
     padding: 60px 5%;
   }
 
   .services-container {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
-  #gallery {
-    padding: 60px 5%;
+  .new-service-card {
+    padding: 16px;
   }
 
+  .service-image {
+    height: 160px;
+  }
+
+  /* BLOG */
+  .blog-section {
+    padding: 50px 5%;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* FEEDBACK */
   .feedback-section {
     padding: 60px 5%;
   }
-.feedback-card img {
-  width: 100%;
-  height: 10px;       /* 👈 giới hạn chiều cao */
-  object-fit: cover;   /* 👈 không méo ảnh */
-  border-radius: 8px;
-}
+
+  .feedback-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feedback-card img {
+    height: 160px;
+  }
+
+  /* FORM */
+  .feedback-form {
+    width: 100%;
+  }
+
+  /* FOOTER */
   .footer-content {
     flex-direction: column;
     text-align: center;
-    gap: 20px;
+    gap: 15px;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+
+  .hero-headline {
+    font-size: 1.8rem;
+  }
+
+  .btn-explore {
+    width: 100%;
+    text-align: center;
+  }
+
+  .service-image {
+    height: 180px;
+  }
+
+  .feedback-card {
+    padding: 12px;
   }
 }
