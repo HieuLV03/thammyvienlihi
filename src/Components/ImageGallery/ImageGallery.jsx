@@ -17,21 +17,30 @@ const ImageGallery = ({ images }) => {
 
       <div className="grid">
         {images.map((img) => (
-          <div key={img.id} className="card">
-            <img
-              src={img.image_url}
-              alt={`${img.title} - phun xăm tại nhà`}
-              loading="lazy"
-            />
+          <div key={img.id} className="image-card-item">
 
-            <h3>{img.title}</h3>
+            {/* IMAGE */}
+            <div className="image-container">
+              <img
+                className="main-img"
+                src={img.image_url}
+                alt={`${img.title} - phun xăm tại nhà`}
+                loading="lazy"
+              />
+            </div>
 
-            <p>
-              📅{" "}
-              {img.created_at
-                ? new Date(img.created_at).toLocaleDateString("vi-VN")
-                : ""}
-            </p>
+            {/* TEXT */}
+            <div className="image-details">
+              <h3 className="title">{img.title}</h3>
+
+              <p className="description">
+                📅{" "}
+                {img.created_at
+                  ? new Date(img.created_at).toLocaleDateString("vi-VN")
+                  : ""}
+              </p>
+            </div>
+
           </div>
         ))}
       </div>

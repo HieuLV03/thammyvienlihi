@@ -15,19 +15,25 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #fff;
+}
+
 section {
   margin-bottom: 80px;
 }
 
 .home-wrapper {
   font-family: var(--font-sans);
+  color: var(--dark);
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 .main-header {
   padding: 25px 5%;
   position: sticky;
   top: 0;
+  z-index: 100;
   background: rgba(255,255,255,0.9);
   backdrop-filter: blur(10px);
 }
@@ -35,6 +41,7 @@ section {
 .nav-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #eee;
   padding-bottom: 15px;
 }
@@ -42,6 +49,7 @@ section {
 .logo-brand {
   font-family: var(--font-serif);
   font-size: 1.6rem;
+  letter-spacing: 2px;
 }
 
 .logo-brand span {
@@ -54,6 +62,13 @@ section {
   list-style: none;
 }
 
+.nav-menu a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
 .nav-cta {
   background: var(--dark);
   color: white !important;
@@ -61,7 +76,7 @@ section {
   border-radius: 50px;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero-editorial {
   min-height: 90vh;
   display: flex;
@@ -73,6 +88,7 @@ section {
 .hero-headline {
   font-family: var(--font-serif);
   font-size: 4rem;
+  line-height: 1.2;
 }
 
 .hero-headline span {
@@ -83,14 +99,25 @@ section {
 .hero-subtext {
   margin: 20px 0;
   color: #666;
+  max-width: 500px;
 }
 
 .btn-explore {
-  border: 1px solid black;
+  display: inline-block;
+  border: 1px solid var(--dark);
   padding: 12px 30px;
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 600;
+  transition: 0.3s;
 }
 
-/* SERVICES */
+.btn-explore:hover {
+  background: var(--dark);
+  color: #fff;
+}
+
+/* ================= SERVICES ================= */
 .services-grid-section {
   padding: 100px 10%;
   background: var(--light-gray);
@@ -99,6 +126,8 @@ section {
 .section-title {
   font-family: var(--font-serif);
   font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
 }
 
 .services-container {
@@ -108,32 +137,78 @@ section {
 }
 
 .new-service-card {
-  background: white;
-  padding: 50px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
   position: relative;
-  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.new-service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
 .card-num {
   position: absolute;
-  top: 20px;
+  top: 15px;
   right: 20px;
-  opacity: 0.1;
   font-size: 2rem;
+  opacity: 0.1;
 }
 
 .card-price {
   color: var(--primary);
   font-weight: bold;
+  margin: 10px 0;
 }
 
 .card-line {
   width: 40px;
   height: 2px;
   background: var(--primary);
+  margin-top: 10px;
 }
 
-/* GALLERY */
+/* ================= BLOG ================= */
+.blog-section {
+  padding: 80px 5%;
+  background: #fff;
+}
+
+.blog-title {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+.blog-card {
+  display: block;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  text-decoration: none;
+  color: var(--dark);
+  transition: 0.3s;
+}
+
+.blog-card:hover {
+  background: var(--accent);
+  transform: translateY(-5px);
+}
+
+.blog-card h3 {
+  margin-bottom: 10px;
+}
+
+/* ================= GALLERY ================= */
 #gallery {
   padding: 100px 5%;
 }
@@ -145,10 +220,70 @@ section {
   margin-bottom: 40px;
 }
 
-/* FOOTER */
+/* ================= FEEDBACK ================= */
+.feedback-section {
+  padding: 80px 5%;
+  background: #fff;
+}
+
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+.feedback-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.feedback-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.feedback-card p {
+  margin-top: 10px;
+}
+
+.feedback-email {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 8px;
+}
+
+.feedback-form {
+  max-width: 500px;
+  margin: 0 auto 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.feedback-form button {
+  padding: 12px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* ================= FOOTER ================= */
 .footer-elegant {
   background: var(--dark);
-  color: white;
+  color: #fff;
   padding: 60px 10%;
 }
 
@@ -160,103 +295,54 @@ section {
 .footer-bottom {
   text-align: center;
   margin-top: 30px;
+  opacity: 0.6;
 }
-/* ================= MOBILE FIX CHUẨN ================= */
+
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  /* HEADER */
   .main-header {
     padding: 15px 5%;
   }
 
-  .nav-container {
-    padding-bottom: 10px;
-  }
-
-  .nav-menu {
-    gap: 10px;
-  }
-
   .nav-menu li:not(:last-child) {
-    display: none; /* chỉ giữ nút gọi */
+    display: none;
   }
 
-  .logo-brand {
-    font-size: 1.3rem;
-  }
-
-  /* HERO */
   .hero-editorial {
     flex-direction: column;
     text-align: center;
     padding: 60px 5%;
-    min-height: auto;
   }
 
   .hero-headline {
     font-size: 2.3rem;
-    line-height: 1.2;
   }
 
-  .hero-headline span {
-    margin-top: 10px;
-  }
-
-  .hero-subtext {
-    font-size: 0.95rem;
-    margin: 15px auto 25px;
-  }
-
-  .btn-explore {
-    padding: 10px 25px;
-    font-size: 0.85rem;
-  }
-
-  /* SERVICES */
   .services-grid-section {
     padding: 60px 5%;
   }
 
-  .section-title {
-    font-size: 2rem;
-    text-align: center;
-  }
-
   .services-container {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
 
-  .new-service-card {
-    padding: 35px 25px;
-  }
-
-  .card-num {
-    font-size: 2rem;
-  }
-
-  /* GALLERY */
   #gallery {
     padding: 60px 5%;
   }
 
-  .gallery-title {
-    font-size: 2rem;
+  .feedback-section {
+    padding: 60px 5%;
   }
-
-  /* IMAGE GRID */
-  .image-gallery-wrapper .grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* FOOTER */
+.feedback-card img {
+  width: 100%;
+  height: 10px;       /* 👈 giới hạn chiều cao */
+  object-fit: cover;   /* 👈 không méo ảnh */
+  border-radius: 8px;
+}
   .footer-content {
     flex-direction: column;
     text-align: center;
     gap: 20px;
-  }
-
-  .footer-elegant {
-    padding: 40px 5%;
   }
 }
