@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
-import { HARDCODED_IMAGES } from '../../assets/data/imagesData.js';
-import UploadForm from '../../Components/UploadForm/UploadForm.jsx';
-import ImageGallery from '../../Components/ImageGallery/ImageGallery.jsx';
+import { useEffect, useState } from "react";
+import { HARDCODED_IMAGES } from "../../assets/data/imagesData";
+import UploadForm from "../../Components/UploadForm/UploadForm";
+import ImageGallery from "../../Components/ImageGallery/ImageGallery";
+import { Link } from "react-router-dom";
+import { supabase } from "../../lib/supabase";
+import { posts } from "../../data/posts";
 import "./Home.css";
 
 const Home = () => {
-  const [images, setImages] = useState(HARDCODED_IMAGES);
+  const [images, setImages] = useState([]);
+  const [demoImages] = useState(HARDCODED_IMAGES);
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+  const fetchImages = async () => {
+    const { data, error } = await supabase
+      .from("images")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (!error && data) {
+      setImages(data);
+    }
+  };
 
   const handleUploadSuccess = (newImage) => {
-    setImages([newImage, ...images]);
+    setImages((prev) => [newImage, ...prev]);
   };
+
+  const allImages = [...images, ...demoImages];
 
   return (
     <div className="home-wrapper">
@@ -29,21 +50,18 @@ const Home = () => {
       {/* HERO */}
       <section className="hero-editorial">
         <div className="hero-content">
-
           <h1 className="hero-headline">
-            Phun xăm tại nhà TP.HCM  
-            <span>Phun môi & chân mày tự nhiên</span>
+            Phun xăm tại nhà uy tín giá rẻ TP.HCM
+            <span>Phun môi collagen & chân mày tự nhiên</span>
           </h1>
 
           <p className="hero-subtext">
-            Lihi Beauty chuyên phun môi collagen, điêu khắc chân mày tại nhà.
-            Kỹ thuật hiện đại, mực organic an toàn, lên màu tự nhiên.
+            Dịch vụ phun xăm tại nhà uy tín, giá rẻ, làm tận nơi, riêng tư tuyệt đối.
           </p>
 
           <a href="tel:0933720528" className="btn-explore">
             📞 Đặt lịch ngay
           </a>
-
         </div>
       </section>
 
@@ -55,45 +73,29 @@ const Home = () => {
         </div>
 
         <div className="services-container">
-          <ServiceCard 
-            num="01"
-            title="Phun môi collagen"
-            price="1.200.000đ"
-            desc="Môi hồng tự nhiên, không sưng, không đau"
-          />
-
-          <ServiceCard 
-            num="02"
-            title="Điêu khắc chân mày"
-            price="1.500.000đ"
-            desc="Dáng mày tự nhiên, phù hợp khuôn mặt"
-          />
+          <ServiceCard num="01" title="Phun môi collagen" price="799.000đ" />
+          <ServiceCard num="02" title="Điêu khắc chân mày" price="999.000đ" />
         </div>
       </section>
+{/* BLOG */}
+<section className="blog-section">
+  <h2 className="blog-title">Bài viết</h2>
 
-      {/* SEO CONTENT */}
-      <section className="seo-content">
-        <h2>Phun xăm tại nhà TP.HCM uy tín</h2>
-        <p>
-          Dịch vụ phun xăm tại nhà giúp bạn tiết kiệm thời gian và đảm bảo riêng tư.
-          Lihi Beauty cung cấp phun môi collagen và điêu khắc chân mày tận nơi.
-        </p>
-
-        <p>
-          Phục vụ tại Bình Tân, Tân Phú, Quận 6, Quận 8 và các khu vực lân cận.
-          Cam kết mực hữu cơ an toàn, lên màu chuẩn.
-        </p>
-      </section>
-
+  <div className="blog-grid">
+    {posts.map((post) => (
+      <Link key={post.slug} to={`/${post.slug}`} className="blog-card">
+        <h3>{post.title}</h3>
+      </Link>
+    ))}
+  </div>
+</section>
       {/* GALLERY */}
-      <section id="gallery" className="gallery-showcase">
-        <div className="section-header center">
-          <span className="section-number">02</span>
-          <h2 className="section-title">Tác phẩm thực tế</h2>
-        </div>
+      <section id="gallery">
+        <h2 className="gallery-title">Khách hàng thực tế</h2>
 
         <UploadForm onUploadSuccess={handleUploadSuccess} />
-        <ImageGallery images={images} />
+
+        <ImageGallery images={allImages} />
       </section>
 
       {/* FOOTER */}
@@ -105,6 +107,7 @@ const Home = () => {
             <p>📞 0933 720 528</p>
           </div>
         </div>
+
         <div className="footer-bottom">
           © 2026 LIHI BEAUTY
         </div>
@@ -114,12 +117,17 @@ const Home = () => {
   );
 };
 
-const ServiceCard = ({ num, title, price, desc }) => (
+const ServiceCard = ({ num, title, price }) => (
   <div className="new-service-card">
     <span className="card-num">{num}</span>
+
     <h3>{title}</h3>
+
     <div className="card-price">{price}</div>
-    <p>{desc}</p>
+
+    <p>Dịch vụ thực hiện tại nhà, riêng tư, an toàn tuyệt đối</p>
+
+    <div className="card-line"></div>
   </div>
 );
 

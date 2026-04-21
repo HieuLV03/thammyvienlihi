@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import Home from './Components/Home/Home.jsx';
-import './index.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Components/Home/Home";
+import PostDetail from "./pages/PostDetail";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/:slug" element={<PostDetail />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

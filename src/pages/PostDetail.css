@@ -1,0 +1,110 @@
+.post-wrapper {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* HERO */
+.post-hero {
+  padding: 80px 10%;
+  background: #fff1f2;
+  text-align: center;
+}
+
+.post-hero h1 {
+  font-size: 2.5rem;
+  color: #e11d48;
+}
+
+.post-hero p {
+  margin-top: 10px;
+  color: #666;
+}
+
+/* CONTENT */
+.post-container {
+  padding: 50px 10%;
+  max-width: 900px;
+  margin: auto;
+}
+
+.post-content h1,
+.post-content h2 {
+  margin-top: 20px;
+}
+
+.post-content p {
+  line-height: 1.8;
+  margin: 10px 0;
+}
+
+.post-content ul {
+  margin-left: 20px;
+}
+
+.post-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* CTA */
+.post-cta {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.post-cta a {
+  background: #e11d48;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+}
+.post-hero {
+  padding: 80px 10%;
+  background: #fff1f2;
+  text-align: center;
+}
+
+.post-hero h1 {
+  font-size: 2.5rem;
+  font-family: var(--font-serif);
+}
+
+.post-hero p {
+  color: #666;
+  margin-top: 10px;
+}
+
+.post-back {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.post-back button {
+  border: none;
+  background: none;
+  color: #e11d48;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.post-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+.post-content img {
+  width: 100%;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+/* FOOTER reuse */
+.footer-elegant {
+  background: #121212;
+  color: white;
+  padding: 60px 10%;
+}
