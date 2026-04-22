@@ -136,7 +136,7 @@ const Home = () => {
 
       {/* FEEDBACK */}
       <section id="feedback" className="feedback-section">
-        <h2 className="gallery-title">Khách hàng đánh giá</h2>
+        <h2 className="gallery-title">Đánh giá</h2>
 
         {/* FORM */}
         <div className="feedback-form">
